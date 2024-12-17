@@ -1,0 +1,47 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1734441647",
+        "python_version": "3.10.0 (tags/v3.10.0:b494f59, Oct  4 2021, 19:00:18) [MSC v.1929 64 bit (AMD64)]",
+        "command_line_arguments": "D:\\UnityProjects\\ML-Agents-ASP\\venv\\Scripts\\mlagents-learn config/fighting_game.yaml --run-id=FightingGame_6",
+        "mlagents_version": "0.30.0",
+        "mlagents_envs_version": "0.30.0",
+        "communication_protocol_version": "1.5.0",
+        "pytorch_version": "2.5.1+cpu",
+        "numpy_version": "1.21.2",
+        "end_time_seconds": "1734441719"
+    },
+    "total": 71.95327930001076,
+    "count": 1,
+    "self": 0.08837439998751506,
+    "children": {
+        "run_training.setup": {
+            "total": 0.14073440001811832,
+            "count": 1,
+            "self": 0.14073440001811832
+        },
+        "TrainerController.start_learning": {
+            "total": 71.72417050000513,
+            "count": 1,
+            "self": 0.000375300005543977,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 71.72378639999079,
+                    "count": 1,
+                    "self": 71.72378639999079
+                },
+                "trainer_threads": {
+                    "total": 8.00006091594696e-07,
+                    "count": 1,
+                    "self": 8.00006091594696e-07
+                },
+                "TrainerController._save_models": {
+                    "total": 8.000002708286047e-06,
+                    "count": 1,
+                    "self": 8.000002708286047e-06
+                }
+            }
+        }
+    }
+}

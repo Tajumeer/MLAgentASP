@@ -34,6 +34,13 @@ public class FIghtingAgent : Agent
         m_maxHealth = m_health;
     }
 
+    private void Start()
+    {
+        var behaviorParams = GetComponent<Unity.MLAgents.Policies.BehaviorParameters>();
+        Debug.Log($"{gameObject.name} - Continuous Actions: {behaviorParams.BrainParameters.ActionSpec.NumContinuousActions}");
+        Debug.Log($"{gameObject.name} - Discrete Actions: {behaviorParams.BrainParameters.ActionSpec.NumDiscreteActions}");
+    }
+
     public override void CollectObservations(VectorSensor _sensor)
     {
         base.CollectObservations(_sensor);
@@ -42,26 +49,63 @@ public class FIghtingAgent : Agent
 
         _sensor.AddObservation(m_health / m_maxHealth);
         _sensor.AddObservation(m_opponent.GetComponent<FIghtingAgent>().m_health / m_opponent.GetComponent<FIghtingAgent>().m_maxHealth);
+
+        Debug.Log($"{gameObject.name} - Observations:");
+    }
+
+    private void FixedUpdate()
+    {
+
+        RequestDecision();
+        //Vector2 rbVelo = m_rb.linearVelocity;
+        //Debug.Log("RB Velocity: " + rbVelo);
     }
 
     public override void OnActionReceived(ActionBuffers _actions)
     {
-        float moveX = _actions.ContinuousActions[0];
         int attack = _actions.DiscreteActions[0];
         int block = _actions.DiscreteActions[1];
 
-        m_rb.linearVelocity = new Vector2(moveX * m_movementSpeed, m_rb.linearVelocityY);
+        float moveX = _actions.ContinuousActions[0];
+        Debug.Log($"moveX Action Value: {moveX}");
+
+
+        float distanceToOpponent = Mathf.Abs(transform.position.x - m_opponent.position.x);
+
+
+        //  m_rb.linearVelocity = new Vector2(moveX * m_movementSpeed, m_rb.linearVelocityY);
+
+        if (distanceToOpponent > m_attackRange)
+        {
+            m_rb.linearVelocity = new Vector2(moveX * m_movementSpeed, m_rb.linearVelocityY);
+        }
+        else
+        {
+            m_rb.linearVelocity = new Vector2(0, m_rb.linearVelocityY);
+
+        }
+
+
         Debug.Log(moveX);
 
         if (attack == 1)
             Attack();
         if (block == 1)
             Block();
+
+        if (distanceToOpponent <= m_attackRange)
+        {
+            AddReward(0.05f);
+        }
+        else
+        {
+            AddReward(-0.01f);
+        }
     }
 
     private void Attack()
     {
-
+        Debug.Log("Attack Called");
 
         if (Time.time - m_lastAttackTimer < m_attackCooldown)
         {
@@ -73,7 +117,7 @@ public class FIghtingAgent : Agent
 
         if (distanceToOpponent <= m_attackRange)
         {
-          
+
 
             FIghtingAgent opponentAgent = m_opponent.GetComponent<FIghtingAgent>();
             if (opponentAgent != null && opponentAgent.m_isBlocking == false)
@@ -97,7 +141,7 @@ public class FIghtingAgent : Agent
     {
         m_sr.color = _flashColor;
 
-        yield return new WaitForSeconds( _duration );
+        yield return new WaitForSeconds(_duration);
 
         m_sr.color = m_startingColor;
     }
@@ -109,11 +153,14 @@ public class FIghtingAgent : Agent
             m_isBlocking = false;
         }
 
-   
+
     }
 
     private void Block()
     {
+
+        Debug.Log("Block Called");
+
         if (Time.time - m_lastBlockTimer < m_blockCooldown)
         {
             return;
