@@ -27,7 +27,7 @@ public class FIghtingAgent : Agent
     private bool m_isBlocking;
     private Color m_startingColor;
 
-
+ 
     public override void Initialize()
     {
         base.Initialize();
@@ -49,7 +49,7 @@ public class FIghtingAgent : Agent
         _sensor.AddObservation(transform.position.x - m_opponent.position.x);
 
         _sensor.AddObservation(m_health / m_maxHealth);
-        _sensor.AddObservation(m_opponent.GetComponent<FIghtingAgent>().m_health / m_opponent.GetComponent<FIghtingAgent>().m_maxHealth);
+        //_sensor.AddObservation(m_opponent.GetComponent<FIghtingAgent>().m_health / m_opponent.GetComponent<FIghtingAgent>().m_maxHealth);
 
         Debug.Log($"{gameObject.name} - Observations:");
     }
@@ -68,22 +68,22 @@ public class FIghtingAgent : Agent
         int block = _actions.DiscreteActions[1];
 
         float moveX = _actions.ContinuousActions[0];
-        Debug.Log($"moveX Action Value: {moveX}");
-
 
         float distanceToOpponent = Mathf.Abs(transform.position.x - m_opponent.position.x);
 
+        float directionToOpponent = Mathf.Abs(transform.position.x - m_opponent.position.x);
+        float intendedMove = moveX * directionToOpponent;
+
+
         if (distanceToOpponent > m_attackRange)
         {
-            m_rb.linearVelocity = new Vector2(moveX * m_movementSpeed, m_rb.linearVelocityY);
+            m_rb.linearVelocity = new Vector2(intendedMove * m_movementSpeed, m_rb.linearVelocityY);
         }
         else
         {
             m_rb.linearVelocity = new Vector2(0, m_rb.linearVelocityY);
-
+            EndEpisode();
         }
-
-        Debug.Log(moveX);
 
         float distanceChange = m_previousDistance - distanceToOpponent;
         //  m_rb.linearVelocity = new Vector2(moveX * m_movementSpeed, m_rb.linearVelocityY);
@@ -99,11 +99,6 @@ public class FIghtingAgent : Agent
 
         m_previousDistance = distanceToOpponent;
 
-        if (attack == 1)
-            Attack();
-        if (block == 1)
-            Block();
-
         if (distanceToOpponent <= m_attackRange)
         {
             AddReward(0.05f);
@@ -112,6 +107,18 @@ public class FIghtingAgent : Agent
         {
             AddReward(-0.01f);
         }
+
+        if(distanceToOpponent < m_attackRange)
+        {
+            EndEpisode();
+        }
+
+        m_previousDistance = distanceToOpponent;
+
+        if (attack == 1)
+            Attack();
+        if (block == 1)
+            Block();
     }
 
     private void Attack()
@@ -130,11 +137,17 @@ public class FIghtingAgent : Agent
         {
 
 
-            FIghtingAgent opponentAgent = m_opponent.GetComponent<FIghtingAgent>();
-            if (opponentAgent != null && opponentAgent.m_isBlocking == false)
+            Dummy opponentAgent = m_opponent.GetComponent<Dummy>();
+            if (opponentAgent != null)
             {
-                opponentAgent.TakeDamage(m_attackDamage);
+                opponentAgent.RecieveDamage(m_attackDamage);
                 AddReward(.1f);
+
+                if(opponentAgent = null)
+                {
+                    AddReward(1f);
+                    EndEpisode();
+                }
             }
         }
         else
