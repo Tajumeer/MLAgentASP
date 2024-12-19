@@ -22,6 +22,7 @@ public class FIghtingAgent : Agent
     private float m_lastAttackTimer;
     private float m_lastBlockTimer;
     private float m_endBlock;
+    private float m_previousDistance;
     private int m_maxHealth;
     private bool m_isBlocking;
     private Color m_startingColor;
@@ -72,9 +73,6 @@ public class FIghtingAgent : Agent
 
         float distanceToOpponent = Mathf.Abs(transform.position.x - m_opponent.position.x);
 
-
-        //  m_rb.linearVelocity = new Vector2(moveX * m_movementSpeed, m_rb.linearVelocityY);
-
         if (distanceToOpponent > m_attackRange)
         {
             m_rb.linearVelocity = new Vector2(moveX * m_movementSpeed, m_rb.linearVelocityY);
@@ -85,8 +83,21 @@ public class FIghtingAgent : Agent
 
         }
 
-
         Debug.Log(moveX);
+
+        float distanceChange = m_previousDistance - distanceToOpponent;
+        //  m_rb.linearVelocity = new Vector2(moveX * m_movementSpeed, m_rb.linearVelocityY);
+
+        if(distanceChange > 0)
+        {
+            AddReward(.1f * distanceChange);
+        }
+        else if (distanceChange < 0)
+        {
+            AddReward(-.1f * Mathf.Abs(distanceChange));
+        }
+
+        m_previousDistance = distanceToOpponent;
 
         if (attack == 1)
             Attack();

@@ -1,0 +1,38 @@
+{
+    "FightingAgent": {
+        "checkpoints": [
+            {
+                "steps": 499968,
+                "file_path": "results\\FightingGame_19\\FightingAgent\\FightingAgent-499968.onnx",
+                "reward": null,
+                "creation_time": 1734631412.4854865,
+                "auxillary_file_paths": [
+                    "results\\FightingGame_19\\FightingAgent\\FightingAgent-499968.pt"
+                ]
+            },
+            {
+                "steps": 500096,
+                "file_path": "results\\FightingGame_19\\FightingAgent\\FightingAgent-500096.onnx",
+                "reward": null,
+                "creation_time": 1734631412.5304484,
+                "auxillary_file_paths": [
+                    "results\\FightingGame_19\\FightingAgent\\FightingAgent-500096.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 500096,
+            "file_path": "results\\FightingGame_19\\FightingAgent.onnx",
+            "reward": null,
+            "creation_time": 1734631412.5304484,
+            "auxillary_file_paths": [
+                "results\\FightingGame_19\\FightingAgent\\FightingAgent-500096.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "2.5.1+cpu"
+    }
+}
