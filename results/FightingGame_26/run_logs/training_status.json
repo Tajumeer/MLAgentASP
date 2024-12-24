@@ -1,0 +1,47 @@
+{
+    "FightingAgent": {
+        "checkpoints": [
+            {
+                "steps": 499977,
+                "file_path": "results\\FightingGame_26\\FightingAgent\\FightingAgent-499977.onnx",
+                "reward": 0.21999993920326233,
+                "creation_time": 1735054404.6537988,
+                "auxillary_file_paths": [
+                    "results\\FightingGame_26\\FightingAgent\\FightingAgent-499977.pt"
+                ]
+            },
+            {
+                "steps": 500041,
+                "file_path": "results\\FightingGame_26\\FightingAgent\\FightingAgent-500041.onnx",
+                "reward": 0.21999993920326233,
+                "creation_time": 1735054404.7125332,
+                "auxillary_file_paths": [
+                    "results\\FightingGame_26\\FightingAgent\\FightingAgent-500041.pt"
+                ]
+            },
+            {
+                "steps": 500041,
+                "file_path": "results\\FightingGame_26\\FightingAgent\\FightingAgent-500041.onnx",
+                "reward": null,
+                "creation_time": 1735058869.5602932,
+                "auxillary_file_paths": [
+                    "results\\FightingGame_26\\FightingAgent\\FightingAgent-500041.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 500041,
+            "file_path": "results\\FightingGame_26\\FightingAgent.onnx",
+            "reward": null,
+            "creation_time": 1735058869.5602932,
+            "auxillary_file_paths": [
+                "results\\FightingGame_26\\FightingAgent\\FightingAgent-500041.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "2.5.1+cpu"
+    }
+}

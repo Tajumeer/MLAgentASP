@@ -1,6 +1,7 @@
 behaviors:
   FightingAgent:  # Name of the agent as specified in the Behavior Parameters in Unity
     trainer_type: ppo  # The trainer (PPO: Proximal Policy Optimization)
+    init_path: "results/FightingGame_26/FightingAgent/FightingAgent-500041.pt" 
     hyperparameters:
       batch_size: 64  # Number of samples per training batch
       buffer_size: 2048  # Number of experiences stored for training
@@ -12,5 +13,5 @@ behaviors:
       extrinsic:  # Extrinsic rewards (rewards defined in the environment)
         gamma: 0.99  # Discount factor (how much future rewards are valued)
         strength: 1.0  # Strength of the reward signal (adjust to make rewards more or less influential)
-    max_steps: 500000  # Total number of steps the agent can take during training
+    max_steps: 5000000  # Total number of steps the agent can take during training
     time_horizon: 64  # Number of steps the agent looks ahead in the training process
