@@ -339,7 +339,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44372b7f10debb54cbed4c583c0899d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_dummyHealth: 5
+  m_maxHealth: 5
+  IsDead: 0
 --- !u!4 &663298924
 Transform:
   m_ObjectHideFlags: 0
@@ -792,7 +793,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5516384351369454254, guid: e46342ab469e1994895de90ddc6e29d7, type: 3}
       propertyPath: m_BrainParameters.VectorObservationSize
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5516384351369454254, guid: e46342ab469e1994895de90ddc6e29d7, type: 3}
       propertyPath: m_BrainParameters.VectorActionSize.Array.size
@@ -800,7 +801,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5516384351369454254, guid: e46342ab469e1994895de90ddc6e29d7, type: 3}
       propertyPath: m_BrainParameters.m_ActionSpec.BranchSizes.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5516384351369454254, guid: e46342ab469e1994895de90ddc6e29d7, type: 3}
       propertyPath: m_BrainParameters.m_ActionSpec.m_NumContinuousActions
@@ -808,7 +809,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5516384351369454254, guid: e46342ab469e1994895de90ddc6e29d7, type: 3}
       propertyPath: 'm_BrainParameters.m_ActionSpec.BranchSizes.Array.data[0]'
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5516384351369454254, guid: e46342ab469e1994895de90ddc6e29d7, type: 3}
       propertyPath: 'm_BrainParameters.m_ActionSpec.BranchSizes.Array.data[1]'
@@ -859,8 +860,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 663298924}
     - target: {fileID: 6989045122602612559, guid: e46342ab469e1994895de90ddc6e29d7, type: 3}
+      propertyPath: m_attackRange
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6989045122602612559, guid: e46342ab469e1994895de90ddc6e29d7, type: 3}
       propertyPath: m_movementSpeed
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6989045122602612559, guid: e46342ab469e1994895de90ddc6e29d7, type: 3}
+      propertyPath: m_attackCooldown
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7752465369182454226, guid: e46342ab469e1994895de90ddc6e29d7, type: 3}
       propertyPath: m_Color.b
