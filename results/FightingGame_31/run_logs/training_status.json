@@ -1,0 +1,65 @@
+{
+    "FightingAgent": {
+        "checkpoints": [
+            {
+                "steps": 999961,
+                "file_path": "results\\FightingGame_31\\FightingAgent\\FightingAgent-999961.onnx",
+                "reward": null,
+                "creation_time": 1736619279.0483656,
+                "auxillary_file_paths": [
+                    "results\\FightingGame_31\\FightingAgent\\FightingAgent-999961.pt"
+                ]
+            },
+            {
+                "steps": 1499938,
+                "file_path": "results\\FightingGame_31\\FightingAgent\\FightingAgent-1499938.onnx",
+                "reward": null,
+                "creation_time": 1736621489.5921192,
+                "auxillary_file_paths": [
+                    "results\\FightingGame_31\\FightingAgent\\FightingAgent-1499938.pt"
+                ]
+            },
+            {
+                "steps": 1999950,
+                "file_path": "results\\FightingGame_31\\FightingAgent\\FightingAgent-1999950.onnx",
+                "reward": null,
+                "creation_time": 1736623678.8926418,
+                "auxillary_file_paths": [
+                    "results\\FightingGame_31\\FightingAgent\\FightingAgent-1999950.pt"
+                ]
+            },
+            {
+                "steps": 2499972,
+                "file_path": "results\\FightingGame_31\\FightingAgent\\FightingAgent-2499972.onnx",
+                "reward": null,
+                "creation_time": 1736625837.9231057,
+                "auxillary_file_paths": [
+                    "results\\FightingGame_31\\FightingAgent\\FightingAgent-2499972.pt"
+                ]
+            },
+            {
+                "steps": 2500036,
+                "file_path": "results\\FightingGame_31\\FightingAgent\\FightingAgent-2500036.onnx",
+                "reward": null,
+                "creation_time": 1736625837.965451,
+                "auxillary_file_paths": [
+                    "results\\FightingGame_31\\FightingAgent\\FightingAgent-2500036.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 2500036,
+            "file_path": "results\\FightingGame_31\\FightingAgent.onnx",
+            "reward": null,
+            "creation_time": 1736625837.965451,
+            "auxillary_file_paths": [
+                "results\\FightingGame_31\\FightingAgent\\FightingAgent-2500036.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "2.5.1+cpu"
+    }
+}

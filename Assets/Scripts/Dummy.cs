@@ -23,12 +23,12 @@ public class Dummy : MonoBehaviour
     {
         m_dummyHealth -= _damage;
 
-        Debug.Log("Dummy has taken Damage HP Left is " + m_dummyHealth);
+        Debug.LogWarning("Dummy has taken Damage HP Left is " + m_dummyHealth);
 
         if (m_dummyHealth <= 0f)
         {
             IsDead = true;
-            Debug.Log("Dummy has been killed");
+            Debug.LogError("Dummy has been killed");
         }
     }
 

@@ -869,7 +869,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6989045122602612559, guid: e46342ab469e1994895de90ddc6e29d7, type: 3}
       propertyPath: m_attackCooldown
-      value: 3
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7752465369182454226, guid: e46342ab469e1994895de90ddc6e29d7, type: 3}
       propertyPath: m_Color.b
