@@ -1,9 +1,11 @@
+using TMPro;
 using UnityEngine;
 
 public class Dummy : MonoBehaviour
 {
 
     [SerializeField] private float m_maxHealth;
+    private TextMeshPro m_HP_Text;
     private float m_dummyHealth;
     public bool IsDead;
 
@@ -11,6 +13,8 @@ public class Dummy : MonoBehaviour
     void Start()
     {
         m_dummyHealth = m_maxHealth;
+        m_HP_Text = GetComponent<TextMeshPro>();
+        m_HP_Text.text = m_dummyHealth.ToString();
     }
 
     public void ResetDummy()
@@ -22,6 +26,7 @@ public class Dummy : MonoBehaviour
     public void RecieveDamage(int _damage)
     {
         m_dummyHealth -= _damage;
+        m_HP_Text.text = m_dummyHealth.ToString();
 
         Debug.LogWarning("Dummy has taken Damage HP Left is " + m_dummyHealth);
 
